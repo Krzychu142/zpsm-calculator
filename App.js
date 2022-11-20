@@ -16,7 +16,8 @@ import Button from './components/Button';
 import Screen from './components/Screen';
 import {colors} from './styles/GlobalColors';
 
-import buttonsData from './data/dataPortrain';
+import buttonsDataPortrain from './data/dataPortrain';
+import buttonsDataLandscape from './data/dataLandscape';
 
 import {nanoid} from 'nanoid';
 
@@ -28,6 +29,14 @@ const App: () => Node = () => {
   const [expression, setExpression] = React.useState('');
   const [screen, setScreen] = React.useState('');
   const [isResult, setResult] = React.useState(false);
+  const [buttonsData, setButtonsData] = React.useState(buttonsDataPortrain);
+
+  const orientation = useDeviceOrientation();
+  React.useEffect(() => {
+    orientation.portrait
+      ? setButtonsData(buttonsDataPortrain)
+      : setButtonsData(buttonsDataLandscape);
+  }, [orientation]);
 
   function buttonClick(s) {
     if (isResult) {

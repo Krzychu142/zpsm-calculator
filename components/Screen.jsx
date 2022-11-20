@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {colors} from '../styles/GlobalColors';
+import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 
 export default function Screen(props) {
   return (

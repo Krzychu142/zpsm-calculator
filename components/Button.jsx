@@ -1,6 +1,5 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {colors} from '../styles/GlobalColors';
 
 export default function Button(props) {
   const styles = StyleSheet.create({
@@ -14,11 +13,20 @@ export default function Button(props) {
     },
   });
   const sing = props.sing;
+  let width = '0';
+
+  if (parseInt(props.size) === 1) {
+    width = '50%';
+  } else if (parseInt(props.size) === 3) {
+    width = '20%';
+  } else {
+    width = '25%';
+  }
 
   return (
     <TouchableOpacity
       onPress={sing === '=' ? props.equal : () => props.onPress(sing)}
-      style={[styles.btn, {width: parseInt(props.size) === 1 ? '50%' : '25%'}]}>
+      style={[styles.btn, {width: `${width}`}]}>
       <Text style={{fontSize: 40}}>{props.sing}</Text>
     </TouchableOpacity>
   );
